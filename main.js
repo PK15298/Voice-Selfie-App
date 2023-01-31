@@ -1,21 +1,22 @@
 var SpeechRecognition = window.webkitSpeechRecognition;
-
+  
 var recognition = new SpeechRecognition();
 
+var Textbox = document.getElementById("box"); 
 
 function start(){
-    document.getElementById("box").innerHTML="";
+    Textbox.innerHTML = ""; 
     recognition.start();
 }
 
 recognition.onresult = function(event){
     console.log(event);
     var content = event.results[0][0].transcript;
-    document.getElementById("box").innerHTML=content;
+    Textbox.innerHTML =content;
     console.log(content);
 
-
-    if(content == "take my Selfie"){
+    if(content == "take my selfie")
+    {
         console.log("taking selfie ---");
         speak();
     }
@@ -32,7 +33,7 @@ function speak(){
         save();
     },5000);
 }
-camera = document.getElementById("cam");
+camera = document.getElementById("camera");
 Webcam.set({
     width:360,
     hright:250,
